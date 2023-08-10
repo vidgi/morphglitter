@@ -1,8 +1,5 @@
-## glitter morph
+## morphglitter: a small 3d clicker game that shimmers with glitches and granulated pixels.
 
-- to run local: `yarn start`
-- to build: `yarn build`
-- to deploy: `yarn run deploy`
 
 resources used:
 
