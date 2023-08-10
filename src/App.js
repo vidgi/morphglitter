@@ -15,7 +15,7 @@ import click5 from "./click5.wav";
 import wave from "./wave.wav";
 import reset from "./reset.wav";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Button, Tooltip, Card, CardContent, Typography, Modal, ToggleButton } from "@mui/material";
+import { Button, Tooltip } from "@mui/material";
 import VidyaIcon from "@mui/icons-material/AutoAwesome";
 
 import { Ocean } from "react-three-ocean";
