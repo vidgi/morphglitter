@@ -6,8 +6,8 @@
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
-    "@mui/icons-material": "^5.8.0",
-    "@mui/material": "^5.8.1",
+    "@mui/icons-material": "^5.14.3",
+    "@mui/material": "^5.14.4",
     "@react-three/csg": "^2.2.0",
     "@react-three/drei": "^9.56.1",
     "@react-three/fiber": "^8.10.1",
