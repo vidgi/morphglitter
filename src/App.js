@@ -1,45 +1,50 @@
 import React, { Suspense, useState } from "react";
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
-// import { Wave } from "./Wave";
-import { Glitch, EffectComposer, Pixelation, ChromaticAberration } from "@react-three/postprocessing";
+import { Glitch, EffectComposer, Pixelation } from "@react-three/postprocessing";
 import { GlitchMode } from "postprocessing";
-import {
-  useGLTF,
-  // Text,
-  Billboard,
-  // Cloud,
-  // Decal,
-  Edges,
-  // Sparkles,
-  // Caustics,
-  Environment,
-  OrbitControls,
-  // RenderTexture,
-  // RandomizedLight,
-  // PerspectiveCamera,
-  // AccumulativeShadows,
-  MeshTransmissionMaterial,
-  // Lightformer,
-  Loader,
-  // Float,
-  Sky,
-  Stars,
-  Html,
-} from "@react-three/drei";
-// import { EffectComposer, Bloom } from "@react-three/postprocessing";
-// import { Geometry, Base, Subtraction } from "@react-three/csg";
-// import coral from "./coral_blender.glb";
-// import coral2 from "./coral_blender2.glb";
+import { useGLTF, Billboard, Edges, Environment, OrbitControls, MeshTransmissionMaterial, Loader, Stars, Html } from "@react-three/drei";
 import coral3 from "./dirt_blend.glb";
 import { LayerMaterial, Color, Depth, Noise } from "lamina";
 import "./App.css";
+import click1 from "./click1.wav";
+import click2 from "./click2.wav";
+import click3 from "./click3.wav";
+import click4 from "./click4.wav";
+import click5 from "./click5.wav";
+import wave from "./wave.wav";
+import reset from "./reset.wav";
 
 import { Ocean } from "react-three-ocean";
 
 export default function App() {
-  const text2 = [
-    // "MORPH DIRT",
+  const playClick1 = () => {
+    new Audio(click1).play();
+  };
+
+  const playClick2 = () => {
+    new Audio(click2).play();
+  };
+
+  const playClick3 = () => {
+    new Audio(click3).play();
+  };
+  const playClick4 = () => {
+    new Audio(click4).play();
+  };
+  const playClick5 = () => {
+    new Audio(click5).play();
+  };
+  const playWave = () => {
+    new Audio(wave).play();
+  };
+
+  const clickFunctions = [playClick1, playClick2, playClick3, playClick4, playClick5];
+
+  const playReset = () => {
+    new Audio(reset).play();
+  };
+  const kaomojis = [
     "⊹₊｡ꕤ˚₊⊹",
     "☆⋆｡𖦹°‧★",
     "˚ ༘ ೀ⋆｡˚",
@@ -62,21 +67,44 @@ export default function App() {
     "。°。°。°。°",
   ];
 
-  // const [count, setCount] = useState(1);
+  const palettes = [
+    ["#2eff70", "#f069ff"],
+    ["#fa23af", "#cef542"],
+    ["#1726ff", "#7fe393"],
+    ["#fa23af", "#1726ff"],
+    ["#2eff70", "#1726ff"],
+    ["#fa23af", "#f069ff"],
+    ["#fa23af", "#7fe393"],
+  ];
+
+  const [colors, setColors] = useState(getRandomElement(palettes));
+  const [pixelSize, setPixelSize] = useState(5);
+  const [number, setNumber] = useState(1);
+  const [count, setCount] = useState(1);
 
   function handleClick(e) {
-    // console.log(e);
+    const x = document.getElementById("audio");
+    x.play();
+    // playWave();
     const element = document.getElementById(e.target.id);
     if (element.textContent) {
-      // element.textContent = element.textContent + text2[count];
-      element.textContent = getRandomElement(text2);
+      element.textContent = getRandomElement(kaomojis);
     }
+    setPixelSize(pixelSize * 1.2);
 
-    // if (count >= text2.length - 1) {
-    //   setCount(0);
-    // } else {
-    //   setCount(count + 1);
-    // }
+    if (number >= 300) {
+      playReset();
+
+      setNumber(1);
+      setPixelSize(5);
+      setColors(getRandomElement(palettes));
+    } else {
+      clickFunctions[count % 5]();
+
+      setCount(count + 1);
+
+      setNumber(number * 1.5);
+    }
   }
 
   function getRndInteger(min, max, delta) {
@@ -88,11 +116,26 @@ export default function App() {
   }
 
   function getRandomTextPosition() {
-    return [getRndInteger(-70, 70, 10), getRndInteger(0, 40, 5), 50];
+    return [getRndInteger(-70, 70, 10), getRndInteger(-20, 60, 1), 50];
+  }
+
+  function Kao(props) {
+    return (
+      <>
+        <Html scale={5} transform position={getRandomTextPosition()}>
+          <a href="#" onClick={handleClick}>
+            <p id={props.id}>{getRandomElement(kaomojis)}</p>
+          </a>
+        </Html>
+      </>
+    );
   }
 
   return (
     <>
+      <audio id="audio" loop>
+        <source src={wave} type="audio/mpeg" />
+      </audio>
       <Canvas shadows camera={{ position: [-200, 10, -85], fov: 35 }}>
         <Suspense fallback={null}>
           {/* <Sky
@@ -124,35 +167,12 @@ export default function App() {
             position={[0, 0, 120]}
           ></Ocean>
           <Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/industrial_workshop_foundry_1k.hdr" />
-          <Coral color={"white"} url={coral3} scale={25} rotation={[0, 0, 0]} position={[-5, 4, -2]} />
-          {/* <Html transform position={[20, 50, 0]}>
-            <div style={{ height: "1375" }}>
-              <img src={[require("./render.png")]} alt="grass" />
-            </div>
-          </Html> */}
-          <Billboard
-            follow={true}
-            lockX={false}
-            lockY={false}
-            lockZ={false} // Lock the rotation on the z axis (default=false)
-          >
-            <Html scale={5} transform position={getRandomTextPosition()}>
-              <a href="#" onClick={handleClick}>
-                <p id="id01">{getRandomElement(text2)}</p>
-              </a>
-            </Html>
+          <Morpho color={colors[0]} url={coral3} scale={25} rotation={[0, 0, 0]} position={[-5, 4, -2]} />
 
-            <Html scale={5} transform position={getRandomTextPosition()}>
-              <a href="#" onClick={handleClick}>
-                <p id="id02">{getRandomElement(text2)}</p>
-              </a>
-            </Html>
-
-            <Html scale={5} transform position={getRandomTextPosition()}>
-              <a href="#" onClick={handleClick}>
-                <p id="id03">{getRandomElement(text2)}</p>
-              </a>
-            </Html>
+          <Billboard follow={true} lockX={false} lockY={false} lockZ={false}>
+            {[...Array(Math.floor(number))].map((x, i) => (
+              <Kao id={i} key={i} />
+            ))}
           </Billboard>
           <Environment background resolution={64}>
             <Striplight position={[10, 100, 0]} scale={[1, 3, 10]} />
@@ -160,7 +180,7 @@ export default function App() {
             <mesh scale={100}>
               <sphereGeometry args={[1, 20, 20]} />
               <LayerMaterial side={THREE.BackSide}>
-                <Color color="#f069ff" alpha={1} mode="normal" />
+                <Color color={colors[1]} alpha={1} mode="normal" />
                 <Depth colorA="#38332a" colorB="#ff8f00" alpha={0.5} mode="normal" near={0} far={300} origin={[100, 100, 100]} />
                 <Noise mapping="local" type="cell" scale={0.5} mode="softlight" />
               </LayerMaterial>
@@ -168,9 +188,7 @@ export default function App() {
           </Environment>
 
           <EffectComposer>
-            <Pixelation
-              granularity={7} // pixel granularity
-            />
+            <Pixelation granularity={pixelSize} />
             <Glitch
               delay={[1.5, 5]} // min and max glitch delay
               duration={[0.6, 1.0]} // min and max glitch duration
@@ -205,33 +223,15 @@ export default function App() {
   );
 }
 
-// function kao(props) {
-//   const { nodes } = useGLTF(props.url);
-//   return (
-//     <>
-//       <group transform scale={props.scale} rotation={props.rotation} position={props.position}>
-//         <mesh geometry={nodes.Mesh_0.geometry} material={nodes.Mesh_0.material}>
-//           <MeshTransmissionMaterial resolution={768} thickness={0.1} anisotropy={1} chromaticAberration={0.5} />
-
-//           <Edges scale={1} threshold={17}>
-//             <lineBasicMaterial color={new THREE.Color(0x2eff70)} toneMapped={false} />
-//           </Edges>
-//         </mesh>
-//       </group>
-//     </>
-//   );
-// }
-
-function Coral(props) {
+function Morpho(props) {
   const { nodes } = useGLTF(props.url);
   return (
     <>
       <group transform scale={props.scale} rotation={props.rotation} position={props.position}>
         <mesh geometry={nodes.Mesh_0.geometry} material={nodes.Mesh_0.material}>
           <MeshTransmissionMaterial resolution={768} thickness={0.1} anisotropy={1} chromaticAberration={0.5} />
-
           <Edges scale={1} threshold={17}>
-            <lineBasicMaterial color={new THREE.Color(0x2eff70)} toneMapped={false} />
+            <lineBasicMaterial color={new THREE.Color(props.color)} toneMapped={false} />
           </Edges>
         </mesh>
       </group>
