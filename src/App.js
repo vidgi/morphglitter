@@ -35,9 +35,6 @@ export default function App() {
   const playClick5 = () => {
     new Audio(click5).play();
   };
-  const playWave = () => {
-    new Audio(wave).play();
-  };
 
   const clickFunctions = [playClick1, playClick2, playClick3, playClick4, playClick5];
 
