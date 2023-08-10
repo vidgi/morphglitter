@@ -1,15 +1,22 @@
 {
   "files": {
     "main.css": "/glitter-morph/static/css/main.b9e19e8f.css",
-    "main.js": "/glitter-morph/static/js/main.7a30b79a.js",
+    "main.js": "/glitter-morph/static/js/main.b1814adf.js",
     "static/media/dirt_blend.glb": "/glitter-morph/static/media/dirt_blend.9ec9e53e94ee1267435f.glb",
+    "static/media/wave.wav": "/glitter-morph/static/media/wave.9b4008ed411e2db8473a.wav",
+    "static/media/reset.wav": "/glitter-morph/static/media/reset.adfbef5b243f925d09ac.wav",
+    "static/media/click2.wav": "/glitter-morph/static/media/click2.7d0d60d3558f8ca368e9.wav",
+    "static/media/click5.wav": "/glitter-morph/static/media/click5.cc9ac4fc077a5bbd1ec4.wav",
+    "static/media/click1.wav": "/glitter-morph/static/media/click1.0cd7721df9fd3b3a8609.wav",
+    "static/media/click3.wav": "/glitter-morph/static/media/click3.30b816da10143ca49c40.wav",
+    "static/media/click4.wav": "/glitter-morph/static/media/click4.7ab11ae3d7b1a7e54fa5.wav",
     "static/media/handjet.ttf": "/glitter-morph/static/media/handjet.48984a8b123eda64c076.ttf",
     "index.html": "/glitter-morph/index.html",
     "main.b9e19e8f.css.map": "/glitter-morph/static/css/main.b9e19e8f.css.map",
-    "main.7a30b79a.js.map": "/glitter-morph/static/js/main.7a30b79a.js.map"
+    "main.b1814adf.js.map": "/glitter-morph/static/js/main.b1814adf.js.map"
   },
   "entrypoints": [
     "static/css/main.b9e19e8f.css",
-    "static/js/main.7a30b79a.js"
+    "static/js/main.b1814adf.js"
   ]
 }
