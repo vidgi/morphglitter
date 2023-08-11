@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/glitter-morph/static/css/main.dec254e0.css",
-    "main.js": "/glitter-morph/static/js/main.dec30774.js",
+    "main.js": "/glitter-morph/static/js/main.ce2b41e9.js",
     "static/media/dirt_blend.glb": "/glitter-morph/static/media/dirt_blend.9ec9e53e94ee1267435f.glb",
     "static/media/wave.wav": "/glitter-morph/static/media/wave.9b4008ed411e2db8473a.wav",
     "static/media/reset.wav": "/glitter-morph/static/media/reset.adfbef5b243f925d09ac.wav",
@@ -13,10 +13,10 @@
     "static/media/handjet.ttf": "/glitter-morph/static/media/handjet.48984a8b123eda64c076.ttf",
     "index.html": "/glitter-morph/index.html",
     "main.dec254e0.css.map": "/glitter-morph/static/css/main.dec254e0.css.map",
-    "main.dec30774.js.map": "/glitter-morph/static/js/main.dec30774.js.map"
+    "main.ce2b41e9.js.map": "/glitter-morph/static/js/main.ce2b41e9.js.map"
   },
   "entrypoints": [
     "static/css/main.dec254e0.css",
-    "static/js/main.dec30774.js"
+    "static/js/main.ce2b41e9.js"
   ]
 }
