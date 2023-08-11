@@ -75,7 +75,14 @@ export default function App() {
     ["#2eff70", "#1726ff"],
     ["#fa23af", "#f069ff"],
     ["#fa23af", "#7fe393"],
+    ["#ff3b72", "#429ba8"],
+    ["#0dff7e", "#ffc587"],
+    ["#dbff0d", ""],
+    ["#0dfffb", ""],
+    ["#ba0dff", ""],
   ];
+
+  const [entered, setEntered] = React.useState(false);
 
   const [colors, setColors] = useState(getRandomElement(palettes));
   const [pixelSize, setPixelSize] = useState(5);
@@ -100,7 +107,12 @@ export default function App() {
     },
   });
 
+  function handleEnter(e) {
+    if (!entered) setEntered(true);
+  }
+
   function handleClick(e) {
+    // if (!entered) setEntered(true);
     const x = document.getElementById("audio");
     x.play();
     // playWave();
@@ -120,6 +132,7 @@ export default function App() {
       setGlitter(1);
     } else {
       clickFunctions[glitter % 5]();
+      setColors(getRandomElement(palettes));
 
       setGlitter(glitter + 1);
 
@@ -154,35 +167,59 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <div
-          style={{
-            position: "absolute",
-            top: "0.2em",
-            left: "1em",
-            zIndex: "10000",
-          }}
-        >
-          <p>
-            <span>
-              morphs: {morph}
-              <br></br>
-              glitters: {glitter}
-            </span>
-          </p>
-        </div>
+        {!entered && (
+          <>
+            <div
+              id="title"
+              style={{
+                position: "absolute",
+                top: "30%",
+                left: "20%",
+                textAlign: "center",
+                zIndex: "10000",
+                fontSize: "3em",
+              }}
+            >
+              <a href="#" onClick={handleEnter}>
+                <p>morphglitter</p>
+              </a>
+            </div>
+          </>
+        )}
 
-        <div
-          style={{
-            position: "absolute",
-            top: "0.2em",
-            right: "1em",
-            zIndex: "10000",
-          }}
-        >
-          <p>
-            <span>score: {morph * 10000 + 100 * glitter}</span>
-          </p>
-        </div>
+        {entered && (
+          <>
+            <div
+              style={{
+                position: "absolute",
+                top: "0.2em",
+                left: "1em",
+                zIndex: "10000",
+              }}
+            >
+              <p>
+                <span>
+                  morphs: {morph}
+                  <br></br>
+                  glitters: {glitter}
+                </span>
+              </p>
+            </div>
+
+            <div
+              style={{
+                position: "absolute",
+                top: "0.2em",
+                right: "1em",
+                zIndex: "10000",
+              }}
+            >
+              <p>
+                <span>score: {morph * 10000 + 100 * glitter}</span>
+              </p>
+            </div>
+          </>
+        )}
 
         <div
           style={{
@@ -235,11 +272,14 @@ export default function App() {
             <Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/industrial_workshop_foundry_1k.hdr" />
             <Morpho color={colors[0]} url={coral3} scale={25} rotation={[0, 0, 0]} position={[-5, 4, -2]} />
 
-            <Billboard follow={true} lockX={false} lockY={false} lockZ={false}>
-              {[...Array(Math.floor(number))].map((x, i) => (
-                <Kao id={i} key={i} />
-              ))}
-            </Billboard>
+            {entered && (
+              <Billboard follow={true} lockX={false} lockY={false} lockZ={false}>
+                {[...Array(Math.floor(number))].map((x, i) => (
+                  <Kao id={i} key={i} />
+                ))}
+              </Billboard>
+            )}
+
             <Environment background resolution={64}>
               <Striplight position={[10, 100, 0]} scale={[1, 3, 10]} />
               <Striplight position={[-10, 100, 0]} scale={[1, 3, 10]} />
@@ -274,7 +314,7 @@ export default function App() {
             <OrbitControls
               autoRotateSpeed={0.2}
               autoRotate={true}
-              enablePan={false}
+              // enablePan={false}
               minDistance={100}
               maxDistance={300}
               // maxAzimuthAngle={Math.PI}
