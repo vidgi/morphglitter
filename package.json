@@ -1,7 +1,7 @@
 {
-  "name": "glitter-morph",
+  "name": "morphglitter",
   "version": "0.0.0",
-  "homepage": "https://vidgi.github.io/glitter-morph",
+  "homepage": "https://vidgi.github.io/morphglitter",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
