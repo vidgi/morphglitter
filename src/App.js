@@ -296,7 +296,7 @@ export default function App() {
             <EffectComposer>
               <Pixelation granularity={pixelSize} />
               <Glitch
-                delay={[1.5, 5]} // min and max glitch delay
+                delay={[1, 30]} // min and max glitch delay
                 duration={[0.6, 1.0]} // min and max glitch duration
                 strength={[0.3, 1]} // min and max glitch strength
                 mode={GlitchMode.SPORADIC} // glitch mode
