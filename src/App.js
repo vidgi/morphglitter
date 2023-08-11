@@ -132,7 +132,7 @@ export default function App() {
       setGlitter(1);
     } else {
       clickFunctions[glitter % 5]();
-      setColors(getRandomElement(palettes));
+      // setColors(getRandomElement(palettes));
 
       setGlitter(glitter + 1);
 
