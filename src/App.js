@@ -22,27 +22,39 @@ import { Ocean } from "react-three-ocean";
 
 export default function App() {
   const playClick1 = () => {
-    new Audio(click1).play();
+    var music1 = new Audio(click1);
+    music1.volume = 0.1;
+    music1.play();
   };
 
   const playClick2 = () => {
-    new Audio(click2).play();
+    var music2 = new Audio(click2);
+    music2.volume = 0.1;
+    music2.play();
   };
 
   const playClick3 = () => {
-    new Audio(click3).play();
+    var music3 = new Audio(click3);
+    music3.volume = 0.1;
+    music3.play();
   };
   const playClick4 = () => {
-    new Audio(click4).play();
+    var music4 = new Audio(click4);
+    music4.volume = 0.1;
+    music4.play();
   };
   const playClick5 = () => {
-    new Audio(click5).play();
+    var music5 = new Audio(click5);
+    music5.volume = 0.1;
+    music5.play();
   };
 
   const clickFunctions = [playClick1, playClick2, playClick3, playClick4, playClick5];
 
   const playReset = () => {
-    new Audio(reset).play();
+    var resetSound = new Audio(reset);
+    resetSound.volume = 0.1;
+    resetSound.play();
   };
   const kaomojis = [
     "⊹₊｡ꕤ˚₊⊹",
@@ -109,13 +121,12 @@ export default function App() {
 
   function handleEnter(e) {
     if (!entered) setEntered(true);
+    const x = document.getElementById("audio");
+    x.volume = 0.1;
+    x.play();
   }
 
   function handleClick(e) {
-    // if (!entered) setEntered(true);
-    const x = document.getElementById("audio");
-    x.play();
-    // playWave();
     const element = document.getElementById(e.target.id);
     if (element.textContent) {
       element.textContent = getRandomElement(kaomojis);
