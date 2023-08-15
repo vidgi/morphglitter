@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/morphglitter/static/css/main.f4f8bc31.css",
-    "main.js": "/morphglitter/static/js/main.c25cf22c.js",
+    "main.js": "/morphglitter/static/js/main.44a99a8b.js",
     "static/media/dirt_blend.glb": "/morphglitter/static/media/dirt_blend.9ec9e53e94ee1267435f.glb",
     "static/media/wave.wav": "/morphglitter/static/media/wave.9b4008ed411e2db8473a.wav",
     "static/media/reset.wav": "/morphglitter/static/media/reset.adfbef5b243f925d09ac.wav",
@@ -13,10 +13,10 @@
     "static/media/handjet.ttf": "/morphglitter/static/media/handjet.48984a8b123eda64c076.ttf",
     "index.html": "/morphglitter/index.html",
     "main.f4f8bc31.css.map": "/morphglitter/static/css/main.f4f8bc31.css.map",
-    "main.c25cf22c.js.map": "/morphglitter/static/js/main.c25cf22c.js.map"
+    "main.44a99a8b.js.map": "/morphglitter/static/js/main.44a99a8b.js.map"
   },
   "entrypoints": [
     "static/css/main.f4f8bc31.css",
-    "static/js/main.c25cf22c.js"
+    "static/js/main.44a99a8b.js"
   ]
 }
